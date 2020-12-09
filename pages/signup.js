@@ -1,9 +1,9 @@
 import Head from 'next/head'
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import Loginpage from '../components/Loginpage';
+import SignUpPage from '../components/SignUpPage';
 
-export default function login() {
+export default function signup() {
   return (
     <div>
       <Head>
@@ -12,7 +12,7 @@ export default function login() {
       </Head>
       <Navbar />
       <main>
-        <Loginpage />
+        <SignUpPage />
       </main> 
       <div>
         <Footer />
