@@ -37,7 +37,7 @@ export default function Footer() {
                 <div className='text-red-light mb-2'>Let's Stay In Touch</div>
                 <div className='mt-4 flex'>
                     <input type='text' class='p-2 border-grey-light round text-grey-dark text-sm h-auto' placeholder='Insert Your Email Here' />
-                    <button className="bg-orange text-white rounded-sm h-auto text-xs p-3">Subscribe</button>
+                    <button className="bg-orange-800 text-white rounded-sm h-auto text-xs p-3">Subscribe</button>
                 </div>
                 <p className='text-grey-darker leading-normal'>Keep up to date with our latest news and special offers.</p>
             </div>

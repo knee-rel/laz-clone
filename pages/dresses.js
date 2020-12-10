@@ -1,22 +1,22 @@
 import Head from 'next/head'
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import Main from '../components/Main';
+import Dresses from '../components/Dresses';
 
 export default function Home() {
-  return (
-    <div>
+    return(
+        <div>
       <Head>
         <title>Saoirse Ecommerce</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
       <main>
-        <Main />
+        <Dresses />
       </main> 
       <div>
         <Footer />
       </div>
     </div>
-  )
+    )
 }
