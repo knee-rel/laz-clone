@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import Main from '../components/Main';
 import Checkout from '../components/Checkout'
 
 export default function Home() {
@@ -13,11 +12,10 @@ export default function Home() {
       </Head>
       <Navbar />
       <main>
-        <Main />
+        <Checkout />
       </main> 
       <div>
         <Footer />
-        <Checkout />
       </div>
     </div>
   )
