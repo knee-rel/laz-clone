@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function NewArrival() {
+const Subscribe = () => {
     return (
         <div className="flex flex-col max-w-8xl md:h-56 bg-white rounded-lg shadow-lg overflow-hidden md:flex-row my-10">
             <div className="md:flex items-center justify-center md:w-1/2 md:bg-gray-700">
@@ -20,3 +20,5 @@ export default function NewArrival() {
         </div>
     )
 }
+
+export default Subscribe
