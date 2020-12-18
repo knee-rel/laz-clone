@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import Notify from './Notify'
 
 const Main = () => {
   const category = [
@@ -51,6 +52,7 @@ const Main = () => {
           )
         })}
       </div>
+      <Notify />
     </main>
   )
 }

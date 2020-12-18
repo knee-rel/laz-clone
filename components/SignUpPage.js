@@ -1,7 +1,33 @@
-import React from 'react'
+import { useState, useContext } from 'react'
 import Link from 'next/link'
+import valid from '../utils/valid'
+import { DataContext } from '../store/GlobalState'
+import { postData } from '../utils/fetchData'
 
 const SignUpPage = () => {
+  const initalState = { firstname: '', lastname: '', email: '', password: '', cf_password: '' }
+  const [userData, setUserData] = useState(initalState)
+  const { firstname, lastname, email, password, cf_password } = userData
+
+  const [state, dispatch] = useContext(DataContext)
+
+  const handleChangeInput = (e) => {
+    const { name, value } = e.target
+    setUserData({ ...userData, [name]: value })
+  }
+
+  const handleSubmit = async e => {
+    e.preventDefault()
+    const errMsg = valid(firstname, lastname, email, password, cf_password)
+    if(errMsg) return dispatch({ type: 'NOTIFY', payload: {error: errMsg } })
+
+    dispatch({ type: 'NOTIFY', payload: {loading: true } })
+
+    const res = await postData('auth/register', userData)
+
+    console.log(res)
+  }
+
   return (
     <div className="container h-screen w-screen">
       <div className="flex flex-col items-center flex-1 h-full justify-center px-4 sm:px-0">
@@ -10,51 +36,66 @@ const SignUpPage = () => {
             <div className="flex flex-col flex-1 justify-center mb-8">
               <h1 className="text-4xl text-center font-thin">Create Your Account</h1>
               <div className="w-full mt-4">
-                <form className="form-horizontal w-3/4 mx-auto" method="POST" action="#">
+                <form className="form-horizontal w-3/4 mx-auto" method="POST" action="#" onSubmit={handleSubmit}>
                   <div className="flex flex-col mt-4">
                     <input
                       id="firstname"
                       type="text"
-                      class="flex-grow h-8 px-2 border rounded border-grey-400"
+                      className="flex-grow h-8 px-2 border rounded border-grey-400"
                       name="firstname"
-                      value=""
+                      value={firstname}
                       placeholder="First Name"
+                      onChange={handleChangeInput}
                     />
                   </div>
                   <div className="flex flex-col mt-4">
                     <input
                       id="lastname"
                       type="text"
-                      class="flex-grow h-8 px-2 border rounded border-grey-400"
+                      className="flex-grow h-8 px-2 border rounded border-grey-400"
                       name="lastname"
-                      value=""
+                      value={lastname}
                       placeholder="Last Name"
+                      onChange={handleChangeInput}
                     />
                   </div>
                   <div className="flex flex-col mt-4">
                     <input
                       id="email"
                       type="text"
-                      class="flex-grow h-8 px-2 border rounded border-grey-400"
+                      className="flex-grow h-8 px-2 border rounded border-grey-400"
                       name="email"
-                      value=""
+                      value={email}
                       placeholder="Email"
+                      onChange={handleChangeInput}
                     />
                   </div>
                   <div className="flex flex-col mt-4">
                     <input
                       id="password"
                       type="password"
-                      class="flex-grow h-8 px-2 border rounded border-grey-400"
+                      className="flex-grow h-8 px-2 border rounded border-grey-400"
                       name="password"
-                      value=""
+                      value={password}
                       placeholder="Password"
+                      onChange={handleChangeInput}
+                    />
+                  </div>
+                  <div className="flex flex-col mt-4">
+                    <input
+                      id="cf_password"
+                      type="password"
+                      className="flex-grow h-8 px-2 border rounded border-grey-400"
+                      name="cf_password"
+                      value={cf_password}
+                      placeholder="Password"
+                      onChange={handleChangeInput}
                     />
                   </div>
 
                   <div className="flex items-center mt-4">
-                    <input type="checkbox" name="remember" id="remember" class="mr-2" />
-                    <label for="remember" class="text-sm text-grey-dark">
+                    <input type="checkbox" name="remember" id="remember" className="mr-2" />
+                    <label for="remember" className="text-sm text-grey-dark">
                       Remember Me
                     </label>
                   </div>
@@ -69,13 +110,8 @@ const SignUpPage = () => {
                   </div>
                 </form>
                 <div className="text-center mt-4">
-                  <Link href= {{ pathname: `/login` }}>
-                    <a
-                      class="no-underline hover:underline text-blue-dark text-xs"
-                      
-                    >
-                      Already have an account?
-                    </a>
+                  <Link href={{ pathname: `/login` }}>
+                    <a class="no-underline hover:underline text-blue-dark text-xs">Already have an account?</a>
                   </Link>
                 </div>
               </div>
