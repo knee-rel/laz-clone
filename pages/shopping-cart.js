@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import Checkout from '../components/Checkout'
+import Cart from '../components/Cart'
 
 export default function Home() {
   return (
@@ -12,7 +12,7 @@ export default function Home() {
       </Head>
       <Navbar />
       <main>
-        <Checkout />
+        <Cart />
       </main> 
       <div>
         <Footer />

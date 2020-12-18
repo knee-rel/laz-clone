@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import SignUpPage from '../components/SignUpPage';
 
-export default function signup() {
+const signup = () => {
   return (
     <div>
       <Head>
@@ -11,7 +11,7 @@ export default function signup() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
-      <main>
+      <main className= 'my-10'>
         <SignUpPage />
       </main> 
       <div>
@@ -20,3 +20,5 @@ export default function signup() {
     </div>
   )
 }
+
+export default signup
