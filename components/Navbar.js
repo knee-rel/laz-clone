@@ -99,7 +99,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="nav-item">
-              <Link href={{ pathname: `/product` }}>
+              <Link href={{ pathname: `/shopping-cart` }}>
                 <button
                   className="p-2 rounded-full bg-gray-800 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500"
                   type="button"
