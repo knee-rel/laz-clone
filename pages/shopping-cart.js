@@ -1,9 +1,7 @@
 import Head from 'next/head'
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
-import Main from '../components/Main'
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 import Cart from '../components/Cart'
-import Subscribe from '../components/Subscribe'
 
 export default function Home() {
   return (
@@ -14,10 +12,8 @@ export default function Home() {
       </Head>
       <Navbar />
       <main>
-        <Main />
         <Cart />
-        <Subscribe />
-      </main>
+      </main> 
       <div>
         <Footer />
       </div>

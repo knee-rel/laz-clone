@@ -1,47 +1,70 @@
-import React from 'react';
+import React from 'react'
+import Link from 'next/link'
 
-export default function Footer() {
-    return (
-        <div className='container bg-gray-800 p-8'>
-            <div className='sm:flex mb-4'>
-                <div className='sm:w-1/4 h-auto'>
-                    <div className='mb-2'>Contact Info</div>
-                    <ul className='list-reset leading-normal'>
-                        <li className='hover:text-orange text-grey-darker'>Phone: </li>
-                        <li className='hover:text-orange text-grey-darker'>Address: </li>
-                    </ul>
-                </div>
+const Footer = () => {
+  const category = [
+    { link: 'new-arrivals', menuName: 'New Arrivals', results: '100' },
+    { link: 'dresses', menuName: 'Dresses', results: '10' },
+    { link: 'tops', menuName: 'Tops', results: '40' },
+    { link: 'eyewear', menuName: 'Eyewear', results: '21' },
+    { link: 'watches', menuName: 'Watches', results: '12' },
+  ]
+  return (
+    <div className="bg-gray-900 p-8">
+      <div className="flex flex-wrap max-w-6xl m-auto text-gray-800">
         <div className="sm:w-1/4 h-auto sm:mt-0 mt-8">
-            <div className="text-blue mb-2">Get Help</div>
-                <ul className="list-reset leading-normal">
-                    <li className="hover:text-blue text-grey-darker">Delivery Information</li>
-                    <li className="hover:text-blue text-grey-darker">Sales Terms and Conditions</li>
-                    <li className="hover:text-blue text-grey-darker">Returns and Refunds</li>
-                    <li className="hover:text-blue text-grey-darker">Privacy Notice</li>
-                    <li className="hover:text-blue text-grey-darker">Shopping FAQs</li>
-                </ul>
-  
-            </div>
-            <div className="sm:w-1/4 h-auto sm:mt-0 mt-8">
-                <div className="text-green-dark mb-2">Popular Categories</div>
-                    <ul className="list-reset leading-normal">
-                        <li className="hover:text-green-dark text-grey-darker">Coats</li>
-                        <li className="hover:text-green-dark text-grey-darker">Jeans</li>
-                        <li className="hover:text-green-dark text-grey-darker">Tops</li>
-                        <li className="hover:text-green-dark text-grey-darker">Sweaters</li>
-                        <li className="hover:text-green-dark text-grey-darker">Jackets</li>
-                    </ul>
-            </div>
+          <div className="text-xs uppercase text-gray-200 font-medium"> Category </div>
 
-            <div className='sm:w-1/2 sm:mt-0 mt-8 h-auto'>
-                <div className='text-red-light mb-2'>Let's Stay In Touch</div>
-                <div className='mt-4 flex'>
-                    <input type='text' class='p-2 border-grey-light round text-grey-dark text-sm h-auto' placeholder='Insert Your Email Here' />
-                    <button className="bg-orange text-white rounded-sm h-auto text-xs p-3">Subscribe</button>
-                </div>
-                <p className='text-grey-darker leading-normal'>Keep up to date with our latest news and special offers.</p>
-            </div>
+          {category.map((value, key) => {
+            return (
+              <div>
+                <Link
+                  href={{
+                    pathname: `/categories/${value.link}`,
+                    query: { cat: value.menuName, res: value.results },
+                  }}
+                >
+                  <a className="my-3 block text-white"> {value.menuName} </a>
+                </Link>
+              </div>
+            )
+          })}
         </div>
+
+        <div className="sm:w-1/4 h-auto sm:mt-0 mt-8">
+          <div className="text-xs uppercase text-gray-200 font-medium">Get Help</div>
+          <a className="my-3 block text-white" href="/">
+            Delivery Information
+          </a>
+          <a className="my-3 block text-white" href="/">
+            Sales Terms and Conditions
+          </a>
+          <a className="my-3 block text-white" href="/">
+            Returns and Refunds
+          </a>
+          <a className="my-3 block text-white" href="/">
+            Privacy Notice
+          </a>
+          <a className="my-3 block text-white" href="/">
+            Shopping FAQs
+          </a>
+        </div>
+
+        <div className="sm:w-1/2 sm:mt-0 mt-8 h-auto">
+          <div className="text-xs uppercase text-gray-200 font-medium">Let's Stay In Touch</div>
+          <div className="mt-4 flex">
+            <input
+              type="text"
+              class="p-2 border-grey-light round text-grey-dark text-sm h-auto"
+              placeholder="Insert Your Email Here"
+            />
+            <button className="bg-orange-800 text-white rounded-sm h-auto text-xs p-3">Subscribe</button>
+          </div>
+          <p className="text-gray-200 leading-normal">Keep up to date with our latest news and special offers.</p>
+        </div>
+      </div>
     </div>
-    )
+  )
 }
+
+export default Footer
